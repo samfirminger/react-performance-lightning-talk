@@ -11,8 +11,8 @@ const ParentContent = styled(Container)`
 
 const Button = styled.button`
   background: none;
-  border-radius: 15px;
-  padding: 5px;
+  border-radius: 4px;
+  padding: 15px;
 `
 
 const Parent = () => {
