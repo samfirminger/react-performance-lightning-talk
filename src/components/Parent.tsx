@@ -13,6 +13,7 @@ const Button = styled.button`
   background: none;
   border-radius: 4px;
   padding: 15px;
+  cursor: pointer;
 `
 
 const Parent = () => {

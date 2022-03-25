@@ -8,16 +8,17 @@ const ChildContainer = styled(Container)`
 `;
 
 const GrandChild = () => {
-    const renderCount = useRef(1);
-    useEffect(() => {
-        renderCount.current++;
-    });
+  const renderCount = useRef(1);
+  useEffect(() => {
+    renderCount.current++;
+  });
 
-    return (
-        <ChildContainer>
-            I am a grandchild and I've rendered {renderCount.current} time(s)
-        </ChildContainer>
-    );
+  return (
+    <ChildContainer>
+      I am a React.memo grandchild and I've rendered {renderCount.current}{" "}
+      time(s)
+    </ChildContainer>
+  );
 };
 
-export default GrandChild;
+export default React.memo(GrandChild);

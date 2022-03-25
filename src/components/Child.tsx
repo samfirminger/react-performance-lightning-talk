@@ -17,7 +17,8 @@ const Child = () => {
   return (
     <div>
       <ChildContainer>
-        I am a child and I've rendered {renderCount.current} time(s)
+        I am a functional component child and I've rendered{" "}
+        {renderCount.current} time(s)
       </ChildContainer>
       <GrandChild />
     </div>
