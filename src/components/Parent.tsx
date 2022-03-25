@@ -4,7 +4,7 @@ import Child from "./Child";
 import { Container } from "./Container";
 
 const ParentContent = styled(Container)`
-  margin-top: 200px;
+  margin-top: 150px;
   background-color: #e5fcf5;
   color: #210124;
 `;
