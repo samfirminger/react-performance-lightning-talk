@@ -1,4 +1,4 @@
-# Lightning talk - Rendering performance improvements with React.memo()
+# Triptease lightning talk ⚡💬 - Rendering performance improvements with React.memo()
 
 This repo was made for a lightning talk, given at Triptease, by myself. It is to showcase the benefits of using 
 React.memo() when using expensive to render functional components. 
