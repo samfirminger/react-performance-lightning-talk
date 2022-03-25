@@ -1,3 +1,19 @@
+# Lightning talk - Rendering performance improvements with React.memo()
+
+This repo was made for a lightning talk, given at Triptease, by myself. It is to showcase the benefits of using 
+React.memo() when using expensive to render functional components. 
+
+By default, the Child component is not memoized. Try clicking the button in the parent. This causes the Parent to 
+rerender, which in turn rerenders all of its children beneath it, including an expensive to render functional component.
+It's slow! You can verify this by looking at the performance stats which get logged to the console (the important number
+is actualTime which is the time taken to render the component in ms)
+
+Uncomment the export in Child which turns it into a memoized component and try again. Although the initial mount render 
+is still slow as it has to store the memoized value first time round. However on subsequent rerenders when you click the
+button, it's waaaaay faster. It's just fetching the cached version of the component from the memo store.
+
+Wooooo, hooray for memo!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

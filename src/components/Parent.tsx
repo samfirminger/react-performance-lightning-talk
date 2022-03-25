@@ -1,4 +1,4 @@
-import React, { Profiler, useEffect, useRef, useState } from "react";
+import React, { Profiler, useRef, useState } from "react";
 import styled from "styled-components";
 import Child from "./Child";
 import { Container } from "./Container";
@@ -20,10 +20,6 @@ const Parent = () => {
   const [buttonClickCount, setButtonClickCount] = useState(0);
 
   const inputRef = useRef<HTMLButtonElement>(null);
-  const numberOfClicks = useRef(0);
-  const rerenderTimeSum = useRef(0);
-  const loopCount = useRef(0);
-  const numberOfLoops = 10;
 
   const clockPerformance = (
     profilerId: any,
@@ -38,27 +34,7 @@ const Parent = () => {
       actualTime,
       baseTime,
     });
-
-    // if (mode !== "mount") {
-    //   rerenderTimeSum.current = rerenderTimeSum.current + actualTime;
-    //   if (loopCount.current === numberOfLoops) {
-    //     console.log(rerenderTimeSum.current / loopCount.current);
-    //   }
-    // }
   };
-
-  // Uncomment if you want to simulate clicks
-  /*useEffect(() => {
-        if (
-          inputRef &&
-          inputRef.current &&
-          numberOfClicks.current < numberOfLoops
-        ) {
-          inputRef.current.click();
-          numberOfClicks.current++;
-          loopCount.current++;
-        }
-      });*/
 
   return (
     <Profiler id={"Whole app"} onRender={clockPerformance}>
