@@ -39,7 +39,7 @@ const Child = () => {
         </Content>
         <Content>
           The result of my expensive calc is:{" "}
-          {doLongAndExpensiveCalculation(10000000)}
+          {doLongAndExpensiveCalculation(100000000)}
         </Content>
       </ChildContainer>
       <GrandChild />
@@ -48,3 +48,4 @@ const Child = () => {
 };
 
 export default Child;
+// export default React.memo(Child);

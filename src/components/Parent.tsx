@@ -1,10 +1,10 @@
-import React, { Profiler, useState } from "react";
+import React, { Profiler, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Child from "./Child";
 import { Container } from "./Container";
 
 const ParentContent = styled(Container)`
-  margin-top: 500px;
+  margin-top: 200px;
   background-color: #e5fcf5;
   color: #210124;
 `;
@@ -17,31 +17,59 @@ const Button = styled.button`
 `;
 
 const Parent = () => {
-  const [count, setCount] = useState(0);
+  const [buttonClickCount, setButtonClickCount] = useState(0);
+
+  const inputRef = useRef<HTMLButtonElement>(null);
+  const numberOfClicks = useRef(0);
+  const rerenderTimeSum = useRef(0);
+  const loopCount = useRef(0);
+  const numberOfLoops = 10;
 
   const clockPerformance = (
     profilerId: any,
     mode: any,
     actualTime: any,
     baseTime: any,
-    startTime: any,
-    commitTime: any
+    _startTime: any,
+    _commitTime: any
   ) => {
     console.log({
       mode,
       actualTime,
       baseTime,
     });
+
+    // if (mode !== "mount") {
+    //   rerenderTimeSum.current = rerenderTimeSum.current + actualTime;
+    //   if (loopCount.current === numberOfLoops) {
+    //     console.log(rerenderTimeSum.current / loopCount.current);
+    //   }
+    // }
   };
 
+  // Uncomment if you want to simulate clicks
+  /*useEffect(() => {
+        if (
+          inputRef &&
+          inputRef.current &&
+          numberOfClicks.current < numberOfLoops
+        ) {
+          inputRef.current.click();
+          numberOfClicks.current++;
+          loopCount.current++;
+        }
+      });*/
+
   return (
-    <Profiler
-      id={"test"}
-      onRender={clockPerformance}
-    >
+    <Profiler id={"Whole app"} onRender={clockPerformance}>
       <ParentContent>
         <h1>I am the parent</h1>
-        <Button onClick={() => setCount(count + 1)}>Click me!</Button>
+        <Button
+          onClick={() => setButtonClickCount(buttonClickCount + 1)}
+          ref={inputRef}
+        >
+          Click me!
+        </Button>
       </ParentContent>
       <Child />
     </Profiler>
